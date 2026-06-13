@@ -1,55 +1,80 @@
 <div align="center">
 
-# Juan David Burgos · `jbu93`
-### Forward Deployed Engineer | Agentic Systems & RAG Architect
-
-`Flask` · `Groq · Llama 3.3 70B` · `RAG / Pinecone` · `Postgres` · `Railway` · `Docker`
-
-[LinkedIn](https://www.linkedin.com/in/juan-burgos-6ab359411) · Cali, Colombia
+# Juan David Burgos · Forward Deployed Engineer / AI Systems
 
 </div>
 
----
+> **🇪🇸 Español** — Llevo sistemas de IA a **producción**, no al demo. Pongo un LLM en el camino crítico de un producto real y hago que **no se rompa**: guardrails en código (fail-closed), recuperación sobre evidencia (RAG), observabilidad y despliegue.
+>
+> **🇬🇧 English** — I take AI systems to **production**, not to the demo. I put an LLM on the critical path of a real product and make it **not break**: guardrails in code (fail-closed), retrieval over evidence (RAG), observability, and deployment.
 
-Construyo y opero **sistemas agénticos en producción**. No estudio la teoría de la IA agéntica — la despliego, la diagnostico cuando falla y la documento en **post-mortems técnicos reales**. Mi portafolio es el código y los incidentes que cerré, no un certificado.
-
-**Cómo trabajo:** guardrails de seguridad en código (no en el prompt) → RAG sobre evidencia → el LLM entra al final → telemetría a un punto central. El mismo patrón, aplicado en dominios distintos.
-
----
-
-## 📌 Repos estrella
-
-| Repo | Qué es | Por qué mirarlo |
-|---|---|---|
-| **[EIR-DR](https://github.com/jbu93/EIR-DR)** | Copiloto clínico odontológico | LLM en camino crítico con **9 guardrails fail-closed**, RAG sobre 33 artículos con DOI, **55/55 tests**. README con arquitectura Mermaid. |
-| **[ECOSISTEMA_AESIR](https://github.com/jbu93/ECOSISTEMA_AESIR)** | Monorepo de varios agentes (EIR · VEDOR · SKIRNIR) | Cómo se orquestan, observan y contienen **varios** agentes a la vez. |
+📍 Cali, Colombia · 🛠️ Python · Flask · Groq · RAG · Railway
+🔗 [LinkedIn](https://www.linkedin.com/in/juan-burgos-6ab359411)
 
 ---
 
-## 🔬 Evidencia de ingeniería (no certificados)
+## 🇪🇸 Español
 
-Publico incidentes que diagnostiqué y cerré, con causa raíz y fix arquitectónico:
+### 🧠 Lo que construyo (mis propios sistemas de ingeniería, en producción/staging)
 
-- **SEV1** — Secreto de sesión con fallback público (account-takeover) → fail-safe aleatorio, nunca un literal del repo.
-- **SEV2** — Entregable corrupto por usar un modelo de imagen para un documento de datos → render determinístico.
-- **SEV3** — `/mcp` daba 500 por import inexistente → que un archivo exista ≠ que sus imports resuelvan.
+- **🦷 EIR DR.** — Un copiloto clínico odontológico. Un LLM (Groq · Llama 3.3 70B) en el camino crítico, en streaming, **detrás de guardrails clínicos escritos en código** que bloquean combinaciones peligrosas *antes* de que el modelo sea siquiera invocado. Historias clínicas legales, RAG anclado en evidencia citable, y un **módulo de CAD dental escrito en Python puro** (diseña coronas y puentes fijos de 3 unidades a partir de un escaneo STL, visor 3D para marcar el margen, exportación STL binaria lista para fresado). → 241 tests determinísticos, en verde.
+- **🛰️ Ecosistema agéntico** — El mismo patrón (*guardrails → RAG → LLM → telemetría*) generalizado a varios agentes: una tienda agéntica con pagos, y un dashboard de telemetría que triangula eventos de cada servicio.
+- **🔬 Motor de Post-Mortem técnico** — Una herramienta que convierte mis incidentes reales en evidencia de ingeniería estructurada (causa raíz → fix arquitectónico → lección reutilizable).
 
-> Generados con un motor propio que **nunca infla métricas**. La credibilidad es el activo.
+### 🛠️ Stack
+
+Python · Flask / Gunicorn · Groq (Llama 3.3 70B) · RAG / Pinecone · PostgreSQL · Docker · Railway · reportlab · Three.js
+
+### 🔒 Cómo trabajo
+
+- **Guardrails en código, no en el prompt** — las reglas de seguridad son sentencias if, fail-closed.
+- **Higiene de secretos** — los secretos viven solo en variables de entorno, nunca en el código.
+- **Verificación ejecutable** — si no produce el artefacto, no cuenta.
+- **Auditoría forense al final de cada proceso** — pasadas de seguridad, lógica e integridad.
+
+### 📒 Bitácora de ingeniería (post-mortems reales · saneados para público)
+
+- [El contrato frontend↔backend que los tests unitarios no cubren](docs/2026-06-13-endpoint-contract.md)
+- ["Se ve correcto" no es "corre": verificar un diseño heredado](docs/2026-06-13-verify-by-running.md)
+- [Construido no es desplegado: la funcionalidad inalcanzable](docs/2026-06-13-built-is-not-shipped.md)
+
+> El código de producción vive en repositorios privados (seguridad). Con gusto doy un recorrido técnico a pedido.
+
+### ⚖️ Principio
+
+**Cero métricas infladas.** Mi historial de incidentes empieza en 0 y solo crece con eventos reales. Mi evidencia no son certificados — es código de producción y post-mortems que cualquiera puede leer. Diagnostico, arreglo, documento.
 
 ---
 
-## 🛠️ Stack
+## 🇬🇧 English
 
-**Backend:** Python · Flask · Gunicorn · Pydantic
-**IA:** Groq (Llama 3.3 70B) · cascada de visión Gemini → Anthropic · RAG
-**Datos:** Postgres · Pinecone · object storage R2/S3
-**Infra:** Docker · Railway · PowerShell
+### 🧠 What I build (my own engineering systems, in production/staging)
 
-<div align="center">
+- **🦷 EIR DR.** — A dental clinical copilot. An LLM (Groq · Llama 3.3 70B) on the critical path, streaming, **behind clinical guardrails written in code** that block dangerous combinations *before* the model is ever called. Legal clinical records, RAG grounded on citable evidence, and a **dental CAD module written in pure Python** (designs crowns and 3-unit fixed bridges from an STL scan, 3D viewer to mark the margin, binary STL export ready for milling). → 241 deterministic tests, green.
+- **🛰️ Agentic ecosystem** — The same pattern (*guardrails → RAG → LLM → telemetry*) generalized across several agents: an agentic store with payments, and a telemetry dashboard that triangulates events from every service.
+- **🔬 Technical Post-Mortem engine** — A tool that turns my real incidents into structured engineering evidence (root cause → architectural fix → reusable lesson).
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jbu93&show_icons=true&theme=tokyonight)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=jbu93&layout=compact&theme=tokyonight)
+### 🛠️ Stack
 
-<sub>Construido en producción, no en un bootcamp. La evidencia es el código.</sub>
+Python · Flask / Gunicorn · Groq (Llama 3.3 70B) · RAG / Pinecone · PostgreSQL · Docker · Railway · reportlab · Three.js
 
-</div>
+### 🔒 How I work
+
+- **Guardrails in code, not in the prompt** — safety rules are if statements, fail-closed.
+- **Secret hygiene** — secrets live only in environment variables, never in code.
+- **Executable verification** — if it doesn't produce the artifact, it doesn't count.
+- **Forensic audit at the end of each process** — security, logic, and integrity passes.
+
+### 📒 Engineering Log (real post-mortems · sanitized for public)
+
+- [The frontend↔backend contract that unit tests don't cover](docs/2026-06-13-endpoint-contract.md)
+- ["Looks correct" is not "runs": verifying an inherited design](docs/2026-06-13-verify-by-running.md)
+- [Built is not shipped: the unreachable feature](docs/2026-06-13-built-is-not-shipped.md)
+
+> Production code lives in private repositories (security). Happy to give a technical walkthrough on request.
+
+### ⚖️ Principle
+
+**Zero inflated metrics.** My incident history starts at 0 and only grows with real events. My evidence isn't certificates — it's production code and post-mortems anyone can read. I diagnose, I fix, I document.
+
+<sub>Forward Deployed Engineer = orquestando, conteniendo y escalando agentes en producción con un blast radius controlado. / orchestrating, containing and scaling agents in production with a controlled blast radius.</sub>
