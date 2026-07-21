@@ -3,7 +3,7 @@
 # Juan David Burgos · `jbu93`
 ### Forward Deployed Engineer | Agentic Systems & RAG Architect
 
-`Flask` · `Groq · Llama 3.3 70B` · `RAG / Pinecone` · `Postgres` · `Railway` · `Docker`
+`Flask` · `Multi-provider LLM chain` · `RAG / Pinecone` · `Postgres` · `Railway` · `Docker`
 
 [LinkedIn](https://www.linkedin.com/in/juan-burgos-6ab359411) · Cali, Colombia
 
@@ -13,7 +13,7 @@
 
 ---
 
-I build and operate **agentic systems in production**. I don't study the theory of agentic AI — I deploy it, diagnose it when it fails, and document it in **real technical post-mortems**. My portfolio is the code and the incidents I closed, not a certificate.
+I build and operate **agentic systems in production**. I don't study the theory of agentic AI — I deploy it, diagnose it when it fails, and document it in **real technical post-mortems and decision records**. My portfolio is the code and the incidents I closed, not a certificate.
 
 **How I work:** security guardrails in code (not in the prompt) -> RAG over evidence -> the LLM runs last -> telemetry to a central point. The same pattern, applied across different domains.
 
@@ -23,18 +23,26 @@ I build and operate **agentic systems in production**. I don't study the theory 
 
 | Repo | What it is | Why look at it |
 |---|---|---|
-| **[EIR-DR](https://github.com/jbu93/EIR-DR)** | Dental clinical copilot | LLM on the critical path behind **fail-closed clinical guardrails**, RAG over evidence (DOI), and a **pure-Python dental CAD module** (crown/bridge design from an STL scan, 3D viewer, export to milling). 241 deterministic tests green. |
+| **[EIR-DR](https://github.com/jbu93/EIR-DR)** | Dental clinical copilot | LLM on the critical path behind **fail-closed clinical guardrails**, RAG over evidence with **live retrieval**, assisted image review with **no uncalibrated confidence scores**, a health-claims audit with **coverage declared rule by rule**, and a **pure-Python dental CAD module** (crown/bridge design from an STL scan, 3D viewer, export to milling). **1,072 deterministic tests green.** |
 | **[ECOSISTEMA_AESIR](https://github.com/jbu93)** | Agent monorepo | The pattern *guardrails -> RAG -> LLM -> telemetry* generalized across several agents: an agentic store with payments and a centralized telemetry dashboard. |
 
 ---
 
 ## Stack
-Python · Flask / Gunicorn · Groq (Llama 3.3 70B) · RAG / Pinecone · PostgreSQL · Docker · Railway · reportlab · Three.js
+Python · Flask / Gunicorn · LLMs in a resilient multi-provider chain · RAG / Pinecone · PostgreSQL · Docker · Railway · reportlab · Three.js
 
 ---
 
-## How I work (this week, for example)
-I build in public and with traceability. This week: I closed 6 administrative phases of EIR DR., built a sovereign dental CAD module (pure-Python geometry engine, no external dependencies), and ran a 360 degree forensic audit protocol that detected and fixed orphaned endpoints, a feature with no entry point, and hardening gaps — every finding documented as a technical post-mortem.
+## Engineering principles I actually enforce
+
+- **Guardrails in code, not in the prompt** — safety rules are `if` statements, fail-closed.
+- **The model returns data, never code** — its output is untrusted data; my code renders it, sandboxed.
+- **Ground or abstain** — if it can't cite a real source, the system says "I didn't find it".
+- **No number the model can't calibrate** — enforced by an output guard, not by a prompt request.
+- **The acceptance criterion is executable** — a model saying "done" is not evidence; a harness exiting 0 is.
+- **Coverage is a promise** — state the denominator and name what you don't check.
+
+📒 **[Read the full engineering log →](./README.md#-bitácora-de-ingeniería-casos-reales--saneados-para-público)** — post-mortems of real incidents and decision records with their trade-offs and accepted costs.
 
 ---
 
